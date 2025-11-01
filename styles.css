@@ -700,6 +700,11 @@ body {
     }
 
     .nav-menu {
+        gap: var(--spacing-sm);
+        font-size: 0.875rem;
+    }
+
+    .nav-menu li:not(:last-child) {
         display: none;
     }
 

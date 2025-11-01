@@ -57,19 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Simple mobile menu toggle (if needed in future)
-const createMobileMenu = () => {
-    const nav = document.querySelector('.nav-content');
-    const menu = document.querySelector('.nav-menu');
-    
-    // This is a placeholder for mobile menu functionality
-    // Can be expanded if needed
-};
-
 // Track analytics events (placeholder)
 const trackEvent = (category, action, label) => {
-    // Analytics can be integrated here
-    console.log('Event:', category, action, label);
+    // Analytics can be integrated here (Google Analytics, Plausible, etc.)
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            'event_category': category,
+            'event_label': label
+        });
+    }
 };
 
 // Add click tracking to CTA buttons
