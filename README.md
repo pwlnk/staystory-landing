@@ -31,8 +31,8 @@ Build and run the Docker container:
 # Build the image
 docker build -t staystory-landing .
 
-# Run the container
-docker run -p 8080:80 staystory-landing
+# Run the container (maps port 8080 on host to port 8080 in container)
+docker run -p 8080:8080 staystory-landing
 ```
 
 Then visit `http://localhost:8080` in your browser.
@@ -43,7 +43,7 @@ The image is automatically built and published to GitHub Container Registry:
 
 ```bash
 docker pull ghcr.io/pwlnk/staystory-landing:latest
-docker run -p 8080:80 ghcr.io/pwlnk/staystory-landing:latest
+docker run -p 8080:8080 ghcr.io/pwlnk/staystory-landing:latest
 ```
 
 ## Deployment
@@ -63,7 +63,7 @@ services:
   staystory-landing:
     image: ghcr.io/pwlnk/staystory-landing:latest
     ports:
-      - "80:80"
+      - "8080:8080"
     restart: unless-stopped
 ```
 
