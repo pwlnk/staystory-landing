@@ -144,10 +144,40 @@ body {
     padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-xl);
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
 }
 
-.hero-content h1 {
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.hero-text h1 {
     font-size: 3rem;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
@@ -157,21 +187,16 @@ body {
     font-size: 1.25rem;
     margin-bottom: var(--spacing-lg);
     opacity: 0.95;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero-cta {
     display: flex;
     gap: var(--spacing-sm);
-    justify-content: center;
     margin-bottom: var(--spacing-lg);
 }
 
 .hero-stats {
     display: flex;
-    justify-content: center;
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
 }
@@ -188,6 +213,26 @@ body {
 .stat-label {
     opacity: 0.9;
     margin-top: 0.25rem;
+}
+
+.hero-image {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius);
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05);
 }
 
 /* Section Headers */
@@ -681,7 +726,16 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hero-content h1 {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-text h1 {
         font-size: 2rem;
     }
 
@@ -697,6 +751,11 @@ body {
     .hero-stats {
         flex-direction: column;
         gap: var(--spacing-md);
+    }
+
+    .hero-image {
+        order: -1;
+        margin-bottom: var(--spacing-md);
     }
 
     .nav-menu {
@@ -744,7 +803,11 @@ body {
         padding: calc(var(--spacing-lg) + 60px) 0 var(--spacing-lg);
     }
 
-    .hero-content h1 {
+    .hero-text h1 {
         font-size: 1.5rem;
+    }
+
+    .hero-image {
+        max-width: 100%;
     }
 }
